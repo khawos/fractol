@@ -17,7 +17,7 @@ void    fractal_init(t_fractal *fractal)
     fractal->img.addr = mlx_get_data_addr(fractal->img.img, &fractal->img.bits_per_pixel, &fractal->img.line_length,
 								&fractal->img.endian);
     // data init;
-    fractal->iterations = 42;
+    fractal->iterations = 20;
     fractal->shift_x = 0;
     fractal->shift_y = 0;
     fractal->zoom = 1;
