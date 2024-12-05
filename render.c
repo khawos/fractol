@@ -1,5 +1,23 @@
 #include "fractal.h"
 
+int get_color(int i, int max_iterations)
+{
+    double t;
+    int red;
+    int green;
+    int blue;
+
+    if (i == max_iterations)
+        return 0x000000;
+    t = (double)i / max_iterations;
+    red = (int)(9 * (1 - t) * t * t * t * 255);
+    green = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
+    blue = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
+
+    return ((red << 16) | (green << 8) | blue);
+}
+
+
 void    place_pixel(t_fractal *fractal, int x, int y)
 {
     t_complex   z;
@@ -19,13 +37,13 @@ void    place_pixel(t_fractal *fractal, int x, int y)
         z = complex_sum(complex_sqrt(z), c);
         if ((z.x * z.x) + (z.y * z.y) > 4)
         {
-            color = convert_range(i, fractal->iterations, BLACK, WHITE);
+            color = get_color(i, fractal->iterations);
             my_mlx_pixel_put(&fractal->img, x, y, color);
             return ;
         }
         i++;
     }
-    my_mlx_pixel_put(&fractal->img, x, y, PINK_FLARE);
+    my_mlx_pixel_put(&fractal->img, x, y, BLACK);
 }
 
 void    draw(t_fractal *fractal)
