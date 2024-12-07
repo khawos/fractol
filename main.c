@@ -23,7 +23,7 @@ int	main(int argv, char **argc)
 		if (argc[2] && argc[3])
 		{
 			fractal.julia_x = atoi_double(argc[2]);
-			fractal.julia_x = atoi_double(argc[3]);
+			fractal.julia_y = atoi_double(argc[3]);
 			fractal.boo = 1;
 		}
 		fractal_init(&fractal);
