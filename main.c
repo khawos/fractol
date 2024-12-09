@@ -20,6 +20,7 @@ int	main(int argv, char **argc)
 	{
 		fractal.name = argc[1];
 		fractal.boo = 0;
+		fractal.active_julia = 0;
 		if (argc[2] && argc[3])
 		{
 			fractal.julia_x = atoi_double(argc[2]);

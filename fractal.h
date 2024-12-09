@@ -17,8 +17,8 @@
 # include <stdlib.h>
 # include <stdio.h> // to delete
 # include "minilibx-linux/mlx.h"
-# define WIDTH 800
-# define HEIGHT 800
+# define WIDTH 700
+# define HEIGHT 700
 
 # define BLACK 0x000000
 # define WHITE 0xFFFFFF
@@ -49,6 +49,7 @@ typedef struct s_fractal
 	int		iterations;
 	char	*name;
 	int		boo;
+	int		active_julia;
 	double	shift_x;
 	double	shift_y;
 	double	julia_x;

@@ -37,6 +37,13 @@ int	key_handler(int keycode, t_fractal *fractal)
 		fractal->iterations += 5;
 	else if (keycode == XK_minus || keycode == 65453)
 		fractal->iterations -= 5;
+	else if (keycode == 106)
+		{
+			if (fractal->active_julia)
+				fractal->active_julia = 0;
+			else
+				fractal->active_julia = 1;
+		}
 	draw(fractal);
 	mlx_put_image_to_window(fractal->mlx_ptr,
 		fractal->mlx_win, fractal->img.img, 0, 0);
@@ -57,7 +64,7 @@ int	mouse_handler(int button, int x, int y, t_fractal *fractal)
 
 int	julia_track(int x, int y, t_fractal *fractal)
 {
-	if (!fractal->boo)
+	if (!fractal->boo || !fractal->active_julia)
 		return (0);
 	fractal->julia_x = convert_range(x, WIDTH, -2, 2) + fractal->shift_x;
 	fractal->julia_y = convert_range(y, HEIGHT, -2, 2) + fractal->shift_y;

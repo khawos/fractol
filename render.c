@@ -73,10 +73,10 @@ void	draw(t_fractal *fractal)
 	int	y;
 
 	y = 0;
-	while (y < WIDTH)
+	while (y < HEIGHT)
 	{
 		x = 0;
-		while (x < HEIGHT)
+		while (x < WIDTH)
 		{
 			place_pixel(fractal, x, y);
 			x++;
