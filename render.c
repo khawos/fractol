@@ -14,10 +14,10 @@
 
 int	get_color(int i, int max_iterations, t_fractal *fractal)
 {
-	double	t;
 	int		red;
 	int		green;
 	int		blue;
+	double	t;
 
 	if (i == max_iterations)
 		return (0x000000);
@@ -46,8 +46,8 @@ void	place_pixel(t_fractal *fractal, int x, int y)
 {
 	t_complex	z;
 	t_complex	c;
-	int		i;
-	int		color;
+	int			i;
+	int			color;
 
 	i = 0;
 	z.x = (convert_range(x, WIDTH, -2, 2) * fractal->zoom) + fractal->shift_x;

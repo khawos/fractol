@@ -15,6 +15,7 @@
 int	main(int argv, char **argc)
 {
 	t_fractal	fractal;
+
 	argv = 0;
 	if (!ft_strcmp(argc[1], "mandelbrot") || !ft_strcmp(argc[1], "julia"))
 	{
@@ -30,6 +31,6 @@ int	main(int argv, char **argc)
 		mlx_loop(fractal.mlx_ptr);
 	}
 	else
-		ft_putchar(MESSAGE_ERROR);
+		ft_putchar(ERROR);
 	return (0);
 }
