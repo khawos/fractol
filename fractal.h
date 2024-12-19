@@ -15,24 +15,12 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <stdlib.h>
-# include <stdio.h> // to delete
+#include <unistd.h>
 # include "minilibx-linux/mlx.h"
 # define WIDTH 700
 # define HEIGHT 700
-
+# define MESSAGE_ERROR "please enter at least one argument\n\t-> ./fractal mandelbrot\n\t->./fractal julia <value 1> <value 2>"
 # define BLACK 0x000000
-# define WHITE 0xFFFFFF
-# define ORANGE_FIRE   0xFFA500  // Blazing Orange
-# define PURPLE_HAZE   0x800080  // Intense Purple
-# define AQUA_SPLASH   0x00FFFF  // Vibrant Aqua
-# define PINK_FLARE    0xFFC0CB  // Neon Pink
-# define CYAN_WAVE     0x00CED1  // Cool Cyan
-# define LAVENDER_DREAM 0xE6E6FA // Soft Lavender
-# define GOLDEN_GLOW   0xFFD700  // Radiant Gold
-# define GRASS_RUSH    0x7CFC00  // Vivid Lime Green
-# define BLOOD_ORANGE  0xFF4500  // Fiery Red-Orange
-# define COSMIC_PURPLE 0x9400D3  // Galactic Purple
-# define NEON_TURQUOISE 0x40E0D0 // Electric Turquoise
 
 typedef struct s_data {
 	void	*img;
@@ -48,8 +36,8 @@ typedef struct s_fractal
 	void	*mlx_win;
 	int		iterations;
 	char	*name;
-	int		boo;
 	int		active_julia;
+	int		color_change;
 	double	shift_x;
 	double	shift_y;
 	double	julia_x;
@@ -78,6 +66,7 @@ int		mouse_handler(int button, int x, int y, t_fractal *fractal);
 int		julia_track(int x, int y, t_fractal *fractal);
 
 // utils
+void	ft_putchar(char *str);
 int		ft_strcmp(char *s1, char *s2);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 double	atoi_double(char *str);

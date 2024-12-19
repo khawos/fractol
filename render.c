@@ -12,7 +12,7 @@
 
 #include "fractal.h"
 
-int	get_color(int i, int max_iterations)
+int	get_color(int i, int max_iterations, t_fractal *fractal)
 {
 	double	t;
 	int		red;
@@ -23,14 +23,14 @@ int	get_color(int i, int max_iterations)
 		return (0x000000);
 	t = (double)i / max_iterations;
 	red = (int)(9 * (1 - t) * t * t * t * 255);
-	green = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
+	green = (int)(15 * (1 - t) * (1 - t) * t * t * 255) + fractal->color_change;
 	blue = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
 	return ((red << 16) | (green << 8) | blue);
 }
 
 void	give_c(t_complex *z, t_complex *c, t_fractal *fractal)
 {
-	if (!ft_strcmp(fractal->name, "julia"))
+	if (!ft_strcmp(fractal->name, "julia") || fractal->active_julia)
 	{
 		c->x = fractal->julia_x;
 		c->y = fractal->julia_y;
@@ -47,7 +47,7 @@ void	place_pixel(t_fractal *fractal, int x, int y)
 	t_complex	z;
 	t_complex	c;
 	int		i;
-	int	color;
+	int		color;
 
 	i = 0;
 	z.x = (convert_range(x, WIDTH, -2, 2) * fractal->zoom) + fractal->shift_x;
@@ -58,7 +58,7 @@ void	place_pixel(t_fractal *fractal, int x, int y)
 		z = complex_sum(complex_sqrt(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > 4)
 		{
-			color = get_color(i, fractal->iterations);
+			color = get_color(i, fractal->iterations, fractal);
 			my_mlx_pixel_put(&fractal->img, x, y, color);
 			return ;
 		}
@@ -83,4 +83,6 @@ void	draw(t_fractal *fractal)
 		}
 		y++;
 	}
+	mlx_put_image_to_window(fractal->mlx_ptr,
+		fractal->mlx_win, fractal->img.img, 0, 0);
 }

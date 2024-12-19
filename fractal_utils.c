@@ -26,6 +26,15 @@ int	ft_strcmp(char *s1, char *s2)
 	return (*s1 - *s2);
 }
 
+void	ft_putchar(char *str)
+{
+	while (*str)
+	{
+		write(1, str, 1);
+		str++;
+	}
+}
+
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
