@@ -16,7 +16,7 @@ int	main(int argv, char **argc)
 {
 	t_fractal	fractal;
 
-	argv = 0;
+	argv += 0;
 	if (!ft_strcmp(argc[1], "mandelbrot") || !ft_strcmp(argc[1], "julia"))
 	{
 		fractal.name = argc[1];

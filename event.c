@@ -52,8 +52,8 @@ int	key_handler(int keycode, t_fractal *fractal)
 
 int	mouse_handler(int button, int x, int y, t_fractal *fractal)
 {
-	x = 42;
-	y = 42;
+	x += 0;
+	y += 0;
 	if (button == Button5)
 		fractal->zoom *= 1.25;
 	else if (button == Button4)
